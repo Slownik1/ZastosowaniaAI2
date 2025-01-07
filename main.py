@@ -1,19 +1,15 @@
 # Fundamental classes
 import numpy as np
-import pandas as pd
 import tensorflow as tf
 import os
 import visualkeras
 
 # Image related
-import cv2 as cv
 from PIL import Image
 
 #Performance Plot
-from sklearn import metrics
-from sklearn.metrics import f1_score, accuracy_score,confusion_matrix,classification_report
+from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 # For the model and it's training
 from sklearn.model_selection import train_test_split
@@ -22,7 +18,6 @@ from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Conv2D, MaxPool2D, Dense, Flatten, Dropout
 
 # Time
-import time
 import datetime
 
 def date_time(x):
@@ -120,7 +115,7 @@ print(X_train.shape, X_test.shape, y_train.shape, y_test.shape)
 y_train = to_categorical(y_train, 43)
 y_test = to_categorical(y_test, 43)
 
-model_type = 1
+model_type = 2
 
 if(model_type == 1):
 
@@ -168,8 +163,8 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 model.summary()
 
 visualkeras.layered_view(model).show()
-visualkeras.layered_view(model, to_file='output.png')
-visualkeras.layered_view(model, to_file='output.png').show()
+visualkeras.layered_view(model, to_file='Sieć 1/output.png')
+visualkeras.layered_view(model, to_file='Sieć 1/output.png').show()
 
 with tf.device('/GPU:0'):
     epochs = 5
